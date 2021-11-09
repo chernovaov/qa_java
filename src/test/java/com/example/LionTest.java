@@ -30,7 +30,12 @@ public class LionTest {
                 expectedListFood, actualListFood);
     }
 
-    @Test // перепроверить
+    @Test(expected = Exception.class)
+    public void lionConstructorWrongGenderReturnException() throws Exception {
+        Lion lion = new Lion("Саме", mockFeline);
+    }
+
+    @Test
     public void lionConstructorWrongGenderIsCorrectExceptionText()  {
         String expectedExceptionText = "Используйте допустимые значения пола животного - самец или самка";
         Exception exception = assertThrows(
@@ -40,8 +45,6 @@ public class LionTest {
         assertEquals("Текст исключения при неверном значении пола не совпадает с ожидаемым",
                 expectedExceptionText, exception.getMessage());
     }
-
-
 
     @Test
     public void lionGetKittensIsResultOneKitten()  {

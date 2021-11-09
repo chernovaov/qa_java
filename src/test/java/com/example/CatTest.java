@@ -16,17 +16,17 @@ public class CatTest {
     @Mock
     private Feline mockFeline;
 
-    private Cat iCat;
+    private Cat miniCat;
 
     @Before
     public void startLionTest() {
-        iCat = new Cat(mockFeline);
+        miniCat = new Cat(mockFeline);
     }
 
     @Test
     public void catGetSoundIsCorrect()  {
         String expectedCatSound = "Мяу";
-        String actualCatSound = iCat.getSound();
+        String actualCatSound = miniCat.getSound();
         assertEquals("Значение издаваемых звуков у кота не совпадает с ожидаемым",
                 expectedCatSound, actualCatSound);
     }
@@ -35,7 +35,7 @@ public class CatTest {
     public void catGetFoodIsCorrect() throws Exception {
         List<String> expectedListFood = List.of("Животные", "Птицы", "Рыба");
         Mockito.when(mockFeline.eatMeat()).thenReturn(expectedListFood);
-        List<String> actualListFood = iCat.getFood();
+        List<String> actualListFood = miniCat.getFood();
         assertEquals("Кот - это Хищник. Список еды Хищника не совпадает с ожидаемым",
                 expectedListFood, actualListFood);
     }
